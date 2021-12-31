@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import From from './Component/Form';
+import React from 'react';
+import CoustomData from './Hooks/CoustomData';
+import IsLoad from './Component/IsLoad';
+import DisplayWeather from './Component/DisplayWeather';
 
-function App() {
+
+function App() { 
+
+  const { IsData, IsError, Isloading, GetInputData, Getdata } = CoustomData();
+  const FormMethod = async (value) => {
+    if (!value || value.length === 0) return;
+    GetInputData(value);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ backgroundColor: "#282c34" }} >
+      <h1 className="text-center mt-2 color-whith ">Weather App</h1>
+      <div className="d-flex justify-content-center mt-5 ">
+
+        {IsData && <From PassMethodeToFomr={FormMethod} ERROR={IsError} />}
+        {Isloading && <IsLoad />}
+        {(!Isloading && !IsData && !IsError) && <DisplayWeather DATA={Getdata} />}
+        {/* <DisplayWeather DATA={Getdata} /> */}
+      </div>
     </div>
+
+
   );
 }
 
