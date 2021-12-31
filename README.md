@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![](ImageProject/SearchCity.png)
 
+##Result ==>
+
+![](ImageProject/Result.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
